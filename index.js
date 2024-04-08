@@ -4,18 +4,20 @@ let editIcon=`<i class="fa-solid fa-pen-to-square"></i>`
 let delIcon =`<i class="fa-solid fa-trash"></i>`
 let list= document.querySelector('.todo-list')
 let ul = document.querySelector(".todo-list ul");
-let newDate= new Date();
+let time= document.createElement("span")
+let newDate= new Date().toDateString();
+time.innerHTML=newDate
 
-// console.log(newDate.getFullYear());
 function Add(){
     let input = document.querySelector(".form-control");
     let val=input.value.trim()
     if(val!=""){
         let li = document.createElement("li");
         ul.appendChild(li);
-        li.textContent = val +"  "+ " "+ newDate.getUTCFullYear();
+        li.textContent = val + newDate;
         li.style.listStyle="none"
         li.style.margin='10px'
+      
         
         let editBtn = document.createElement("span");
         editBtn.innerHTML = editIcon;
@@ -94,11 +96,12 @@ searchbtn.addEventListener("click", function () {
     document.querySelector(".search").value = ""
   });
 
-  // function descrip(){
-  //   let descript= document.querySelector(".descript").value.trim();
-  //   let li= document.createElement("li")
-  //   ul.appendChild(li);
-  //   li.textContent=descript
-  //   document.querySelector(".descript").value="";
-  //   console.log(descript);
-  // }
+  function descrip(){
+    let descript= document.querySelector(".descript").value.trim();
+    let li= document.createElement("li")
+    ul.appendChild(li);
+    li.textContent=descript
+    document.querySelector(".descript").value="";
+    console.log(descript);
+  }
+  
